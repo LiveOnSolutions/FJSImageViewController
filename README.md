@@ -7,6 +7,8 @@ You can save effort to make ImageViewController.
 ## Features
 - Show Image, and can pan and pinch the image.
 
+![fjsimageviewcontroller](https://cloud.githubusercontent.com/assets/4578511/11917589/4956cf06-a751-11e5-9edb-2f1c6a572f32.gif)
+
 ## How to use
 
 Create `FJSImageViewController` instance where you want.
