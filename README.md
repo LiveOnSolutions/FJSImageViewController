@@ -26,6 +26,30 @@ presentViewController(imageVC, animated: false, completion: nil)
 
 ## Installation and Setup
 
+### Installing with CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate FJSImageViewController into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'FJSImageViewController'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
 ### Installing with Carthage
 
 Just add to your Cartfile:
