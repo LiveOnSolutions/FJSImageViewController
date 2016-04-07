@@ -15,19 +15,23 @@ public class FJSImageViewController: UIViewController {
     public var contentMode: UIViewContentMode = .ScaleToFill
     /** Position and size of image */
     public var imageViewFrame: CGRect?
-    
+
     private var isDirty = false;
     private let imageView = UIImageView(image: nil)
     private var beforePoint = CGPointMake(0.0, 0.0)
     private var currentScale = CGFloat(1.0)
-    
+
+    public func getImagePosition() -> CGRect {
+        return imageView.frame
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         configureImageView()
         setupGesture()
     }
-    
+
     internal func handleGesture(gesture: UIGestureRecognizer){
         if let tapGesture = gesture as? UITapGestureRecognizer{
             tap(tapGesture)
@@ -37,7 +41,7 @@ public class FJSImageViewController: UIViewController {
             pan(panGesture)
         }
     }
-    
+
     private func configureImageView(){
         self.imageView.image = image
         self.imageView.contentMode = contentMode
@@ -45,27 +49,27 @@ public class FJSImageViewController: UIViewController {
         self.imageView.userInteractionEnabled = true
         self.view.addSubview(self.imageView)
     }
-    
+
     private func setupGesture(){
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: "handleGesture:")
         self.view.addGestureRecognizer(pinchGesture)
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: "handleGesture:")
         self.view.addGestureRecognizer(tapGesture)
-        
+
         let panGesture = UIPanGestureRecognizer(target: self, action: "handleGesture:")
         self.view.addGestureRecognizer(panGesture)
     }
-    
+
     private func pan(gesture:UIPanGestureRecognizer){
         isDirty = true
-        
+
         var translation = gesture.translationInView(self.view)
-        
+
         if abs(self.beforePoint.x) > 0.0 || abs(self.beforePoint.y) > 0.0{
             translation = CGPointMake(self.beforePoint.x + translation.x, self.beforePoint.y + translation.y)
         }
-        
+
         switch gesture.state{
         case .Changed:
             let scaleTransform = CGAffineTransformMakeScale(self.currentScale, self.currentScale)
@@ -89,11 +93,11 @@ public class FJSImageViewController: UIViewController {
             self.dismissViewControllerAnimated(false, completion: nil)
         }
     }
-    
+
     private func pinch(gesture:UIPinchGestureRecognizer){
         var scale = gesture.scale
         scale = self.currentScale + (scale - 1.0)
-        
+
         switch gesture.state{
         case .Changed:
             isDirty = true
