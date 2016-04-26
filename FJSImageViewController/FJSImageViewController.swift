@@ -17,7 +17,7 @@ public class FJSImageViewController: UIViewController {
     public var imageViewFrame: CGRect?
 
     private var isDirty = false;
-    private let imageView = UIImageView(image: nil)
+    public var imageView = UIImageView(image: nil)
     private var beforePoint = CGPointMake(0.0, 0.0)
     private var currentScale = CGFloat(1.0)
 
