@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FJSImageViewController"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "Show Image, and can pan and pinch the image. You can save effort to make ImageViewController."
   s.description  = <<-DESC
   					- Show Image, and can pan and pinch the image. You can save effort to make ImageViewController.
